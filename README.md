@@ -1,5 +1,7 @@
 <img src="https://raw.githubusercontent.com/Devamsingh09/mini-agentic/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png" alt="Workflow Chart" width="500"/>
 
+
+
 ````markdown
 # Mini Agentic Pipeline
 
@@ -129,10 +131,12 @@ mini-agentic/
 * `Tavily` API key is required for web search queries.
 * The system decides automatically whether to use KB, CSV, or web search based on the question.
 
-
+Link for the Code Explanation Video:
+https://drive.google.com/file/d/1ra2m5v9etOmKXJ87YMDc8bqJKc0PFOTu/view?usp=sharing
 
 
 ```
+
 
 
 
