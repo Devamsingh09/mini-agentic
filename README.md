@@ -3,7 +3,7 @@
 # Mini Agentic Pipeline
 
 
-https://github.com/Devamsingh09/mini-agentic/blob/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png
+![Workflow Chart](https://raw.githubusercontent.com/Devamsingh09/mini-agentic/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png)
 
 
 A Python-based mini agentic system that:
@@ -132,6 +132,7 @@ mini-agentic/
 
 
 ```
+
 
 
 
