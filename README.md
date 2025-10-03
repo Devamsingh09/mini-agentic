@@ -1,6 +1,6 @@
-Sure! Here’s the `README.md` content in plain text format:
 
-```
+
+```markdown
 # Mini Agentic Pipeline
 
 A lightweight AI-driven agentic pipeline that retrieves knowledge from a small knowledge base, reasons using a large language model (LLM), executes actions via tools (CSV lookup or web search), and provides step-by-step traceable answers.
@@ -64,61 +64,50 @@ mini-agentic/
 ├── interactive.py           # Run interactive chatbot
 └── README.md
 
-```
+````
 
 ---
 
 ## Setup Instructions
 1. Clone the repository:
-```
-
-git clone [https://github.com/Devamsingh09/mini-agentic.git](https://github.com/Devamsingh09/mini-agentic.git)
+```bash
+git clone https://github.com/Devamsingh09/mini-agentic.git
 cd mini-agentic
-
-```
+````
 
 2. Create a Python virtual environment and activate it:
-```
 
+```bash
 python -m venv venv
-
 # Windows
-
 venv\Scripts\activate
-
 # macOS/Linux
-
 source venv/bin/activate
-
 ```
 
 3. Install dependencies:
-```
 
+```bash
 pip install -r requirements.txt
-
 ```
 
 4. Create a `.env` file in the root directory and set your API keys:
-```
 
+```
 TAVILY_API_KEY=your_tavily_api_key_here
 GEMINI_API_KEY=your_gemini_api_key_here
-
 ```
 
 5. Generate sample documents and CSV (optional):
-```
 
+```bash
 python generate.py
-
 ```
 
 6. Build the FAISS index:
-```
 
+```bash
 python src/retriever.py
-
 ```
 
 ---
@@ -126,29 +115,29 @@ python src/retriever.py
 ## Usage
 
 ### Interactive Chat
-```
 
+```bash
 python interactive.py
-
 ```
-- Type your query and get a step-by-step response.
-- Exit by typing `exit` or `quit`.
+
+* Type your query and get a step-by-step response.
+* Exit by typing `exit` or `quit`.
 
 ### Example Query
-```
 
+```
 You: Who is Narendra Modi?
 Bot: <Answer from KB or Web Search>
-
-````
+```
 
 ### Programmatic Usage
+
 ```python
 from src.controller import orchestrate_query
 
 result = orchestrate_query("What is the maximum price in prices.csv?", prompt_version="v2")
 print(result["final_answer"])
-````
+```
 
 ---
 
@@ -156,7 +145,7 @@ print(result["final_answer"])
 
 * Run automated tests on 8–12 queries:
 
-```
+```bash
 python src/evaluate.py
 ```
 
@@ -198,9 +187,8 @@ Record a 5–8 minute video showing:
 
 ---
 
-## License
 
-MIT License
+This `README.md` covers **setup, usage, project structure, and instructions** fully, tailored to your current project using **Tavily API** and FAISS.  
 
-```
+If you want, I can also **add a table of example queries and expected tool usage** to make it more demo-ready. Do you want me to do that?
 ```
