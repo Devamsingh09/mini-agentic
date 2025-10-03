@@ -2,8 +2,8 @@
 ````markdown
 # Mini Agentic Pipeline
 
-<img width="1024" height="1024" alt="Gemini_Generated_Image_q5eb7zq5eb7zq5eb" src="https://github.com/user-attachments/assets/83905850-fafd-43e5-85b1-a77b64010c7f" />
 
+https://github.com/Devamsingh09/mini-agentic/blob/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png
 
 
 A Python-based mini agentic system that:
@@ -132,5 +132,6 @@ mini-agentic/
 
 
 ```
+
 
 
