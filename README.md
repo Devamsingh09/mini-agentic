@@ -2,6 +2,9 @@
 ````markdown
 # Mini Agentic Pipeline
 
+<img width="1024" height="1024" alt="Gemini_Generated_Image_q5eb7zq5eb7zq5eb" src="https://github.com/user-attachments/assets/9d106e7d-a90b-440c-ae2c-b150244e08f5" />
+
+
 A Python-based mini agentic system that:
 - Retrieves relevant context from a small knowledge base (KB).
 - Uses an LLM to reason and decide the next step.
@@ -126,8 +129,6 @@ mini-agentic/
 
 
 
+
 ```
 
-
-Do you want me to add that too?
-```
