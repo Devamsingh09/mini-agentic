@@ -1,4 +1,5 @@
-![Workflow Chart](https://raw.githubusercontent.com/Devamsingh09/mini-agentic/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png)
+<img src="https://raw.githubusercontent.com/Devamsingh09/mini-agentic/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png" alt="Workflow Chart" width="500"/>
+
 ````markdown
 # Mini Agentic Pipeline
 
@@ -132,6 +133,7 @@ mini-agentic/
 
 
 ```
+
 
 
 
