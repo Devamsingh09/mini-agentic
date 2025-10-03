@@ -118,7 +118,7 @@ mini-agentic/
 ├── interactive.py      # Interactive chatbot CLI
 └── README.md
 ```
-
+![Workflow Chart](https://raw.githubusercontent.com/Devamsingh09/mini-agentic/main/Gemini_Generated_Image_q5eb7zq5eb7zq5eb.png)
 ---
 
 ## Notes
@@ -132,6 +132,7 @@ mini-agentic/
 
 
 ```
+
 
 
 
