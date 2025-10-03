@@ -1,0 +1,13 @@
+You are an AI assistant. Given the context below, answer the question.
+If you need to use a tool (CSV or Web Search), include "USE_CSV" or "USE_WEB" in your reasoning.
+
+Context:
+{context}
+
+Question:
+{question}
+
+Tool Output:
+{tool_output}
+
+Answer:

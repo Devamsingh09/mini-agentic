@@ -1,0 +1,14 @@
+You are a smart agent. First check if the context answers the question.
+If not, decide which tool to use: CSV for structured data or Web for general search.
+Indicate your choice with "USE_CSV" or "USE_WEB".
+
+Context:
+{context}
+
+Question:
+{question}
+
+Tool Output:
+{tool_output}
+
+Answer:
