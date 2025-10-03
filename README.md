@@ -1,88 +1,41 @@
 
-
-```markdown
+````markdown
 # Mini Agentic Pipeline
 
-A lightweight AI-driven agentic pipeline that retrieves knowledge from a small knowledge base, reasons using a large language model (LLM), executes actions via tools (CSV lookup or web search), and provides step-by-step traceable answers.
-
----
-
-## Table of Contents
-- [Objective](#objective)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Evaluation](#evaluation)
-- [Demo](#demo)
-- [Design Decisions](#design-decisions)
-- [Limitations](#limitations)
-- [License](#license)
-
----
-
-## Objective
-The pipeline:
-1. Retrieves relevant context from a small knowledge base (KB).
-2. Uses an LLM to reason and decide the next step.
-3. Executes an action via a tool (CSV lookup or web search via Tavily API).
-4. Produces a final answer with a clear step-by-step trace/log.
+A Python-based mini agentic system that:
+- Retrieves relevant context from a small knowledge base (KB).
+- Uses an LLM to reason and decide the next step.
+- Executes actions via a tool (local CSV lookup or web search via Tavily API).
+- Produces final answers with step-by-step logs and reasoning traces.
 
 ---
 
 ## Features
-- **Retriever**: FAISS-based retrieval of 8–20 text documents.
-- **Reasoner**: LLM-driven reasoning (supports multiple prompt versions: v1, v2).
-- **Actor Tools**:
-  - Local CSV lookup (`prices.csv`)
-  - Web search via Tavily API
-- **Agentic Behavior**: System decides automatically whether to use KB or tools.
-- **Logging**: Step-by-step trace of retrieval, reasoning, and tool usage.
+
+- **Retriever**: Uses FAISS vector store with HuggingFace embeddings for fast context retrieval from 8–20 KB documents.
+- **Reasoner**: LLM-based reasoning with modular prompt templates (`v1`, `v2`).
+- **Actor**: Executes actions using:
+  - Local CSV tool (`prices.csv`) for numeric or pricing queries.
+  - Web search tool via Tavily API for general queries.
+- **Orchestrator**: Handles agentic behavior, decides when to use tools, logs each step, and returns detailed outputs.
+- **Evaluation**: Test multiple queries, track latency, and assess answer quality.
 
 ---
 
-## Project Structure
-```
+## Installation
 
-mini-agentic/
-├── data/
-│   ├── docs/                # 8–20 KB text documents
-│   └── prices.csv           # Local CSV used as tool
-├── src/
-│   ├── retriever.py
-│   ├── reasoner.py
-│   ├── actor_csv.py
-│   ├── actor_web.py
-│   ├── controller.py
-│   ├── evaluate.py
-│   └── utils.py
-├── prompts/
-│   ├── reasoner_v1.txt
-│   └── reasoner_v2.txt
-├── requirements.txt
-├── generate.py              # Generates sample docs & CSV
-├── interactive.py           # Run interactive chatbot
-└── README.md
-
-````
-
----
-
-## Setup Instructions
 1. Clone the repository:
 ```bash
 git clone https://github.com/Devamsingh09/mini-agentic.git
 cd mini-agentic
 ````
 
-2. Create a Python virtual environment and activate it:
+2. Create and activate a virtual environment:
 
 ```bash
 python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
+source venv/bin/activate      # Linux/macOS
+venv\Scripts\activate         # Windows
 ```
 
 3. Install dependencies:
@@ -91,104 +44,90 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the root directory and set your API keys:
+4. Create a `.env` file in the root directory with your API key:
 
-```
+```text
 TAVILY_API_KEY=your_tavily_api_key_here
-GEMINI_API_KEY=your_gemini_api_key_here
-```
-
-5. Generate sample documents and CSV (optional):
-
-```bash
-python generate.py
-```
-
-6. Build the FAISS index:
-
-```bash
-python src/retriever.py
+GEMINI_API_KEY=your_gemini_api_key_here  # if using Gemini
 ```
 
 ---
 
 ## Usage
 
-### Interactive Chat
+### 1. Generate FAISS Index
+
+Before running the bot, generate the FAISS index from your KB documents:
+
+```bash
+python src/retriever.py
+```
+
+This will create a FAISS index in the `faiss_index` folder for fast retrieval.
+
+### 2. Run the Bot in Real-Time
+
+Start the interactive chatbot:
 
 ```bash
 python interactive.py
 ```
 
-* Type your query and get a step-by-step response.
-* Exit by typing `exit` or `quit`.
+* Type your queries and get answers.
+* Exit the chat by typing `exit` or `quit`.
 
-### Example Query
+### 3. Evaluate the System
 
-```
-You: Who is Narendra Modi?
-Bot: <Answer from KB or Web Search>
-```
-
-### Programmatic Usage
-
-```python
-from src.controller import orchestrate_query
-
-result = orchestrate_query("What is the maximum price in prices.csv?", prompt_version="v2")
-print(result["final_answer"])
-```
-
----
-
-## Evaluation
-
-* Run automated tests on 8–12 queries:
+Run automated evaluation on predefined test queries:
 
 ```bash
 python src/evaluate.py
 ```
 
-* Reports:
+* Produces reports including:
 
   * Latency per query
-  * Tool usage
+  * Tool usage (CSV or web search)
   * Answer quality
 
 ---
 
-## Demo
+## Project Structure
 
-Record a 5–8 minute video showing:
-
-* Architecture explanation
-* Code walkthrough
-* Demo on 3–4 queries
-* Learnings and limitations
-
----
-
-## Design Decisions
-
-* **FAISS** for fast KB retrieval
-* **HuggingFace embeddings** for semantic search
-* **Tavily API** for reliable web search
-* **CSV tool** as a local structured data source
-* Modular prompt system with versions
-
----
-
-## Limitations
-
-* Limited KB (8–20 documents)
-* Web search depends on Tavily API availability
-* LLM reasoning may not be perfect for all queries
-* CSV tool only works with structured queries about prices
+```
+mini-agentic/
+├── data/
+│   ├── docs/           # KB documents (8–20 text files)
+│   └── prices.csv      # CSV used as a tool
+├── src/
+│   ├── retriever.py    # Builds & loads FAISS index
+│   ├── reasoner.py     # LLM reasoning
+│   ├── actor_csv.py    # CSV lookup tool
+│   ├── actor_web.py    # Tavily web search tool
+│   ├── controller.py   # Orchestrates retrieval, reasoning, and tools
+│   ├── evaluate.py     # Runs evaluation queries and metrics
+│   └── utils.py        # Utility functions
+├── prompts/
+│   ├── reasoner_v1.txt
+│   └── reasoner_v2.txt
+├── requirements.txt
+├── interactive.py      # Interactive chatbot CLI
+└── README.md
+```
 
 ---
 
+## Notes
 
-This `README.md` covers **setup, usage, project structure, and instructions** fully, tailored to your current project using **Tavily API** and FAISS.  
+* Ensure `data/docs/` contains meaningful text documents for KB context.
+* Make sure `data/prices.csv` exists and has the expected structure for CSV queries.
+* `Tavily` API key is required for web search queries.
+* The system decides automatically whether to use KB, CSV, or web search based on the question.
 
-If you want, I can also **add a table of example queries and expected tool usage** to make it more demo-ready. Do you want me to do that?
+
+
+```
+
+
+Do you want me to add that too?
 ```
